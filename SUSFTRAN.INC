@@ -1,0 +1,19 @@
+      integer sus_fwd_tran_n_op
+      integer sus_fwd_tran_mx_n_op
+      integer sus_eta_ls_n_en
+      integer sus_eta_ls_f_en
+      integer sus_eta_ls_l_en
+      integer rpt_eta_ls_f_en
+      integer eta_srch_co
+      integer prev_dl_eta_n
+      integer rp_sus_eta_op
+      common/ems_sus_fwd_tran_com/
+     &     sus_fwd_tran_n_op,
+     &     sus_fwd_tran_mx_n_op,
+     &     sus_eta_ls_n_en,
+     &     sus_eta_ls_f_en,
+     &     sus_eta_ls_l_en,
+     &     rpt_eta_ls_f_en,
+     &     eta_srch_co,
+     &     prev_dl_eta_n,
+     &     rp_sus_eta_op
