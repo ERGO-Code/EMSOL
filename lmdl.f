@@ -696,7 +696,7 @@ c
 c     Take a copy of the current row starts in order to find the end of
 c     the list of row indices in the pricing list.
 c
-      call ems_cp_i_a(n_r, mtx_r_sa(1), rsmi_i_wk_a1(1), 1)
+      call ems_cp_i_a1(n_r, mtx_r_sa(1), rsmi_i_wk_a1(1))
 c
 c     Now go through all the columns adding to the section corresponding
 c     to columns not used for pricing. Note that nonbasic variables not
@@ -1017,9 +1017,9 @@ c
       double precision c_scl_v
  
       if (iand(ml_da_st_msk, ml_da_st_scl_ml_mtx) .eq. 0) then
-         call ems_cp_i_a(n_c+1, mtx_c_sa(1), usr_mtx_c_sa(1), 1)
-         call ems_cp_i_a(n_a_el, mtx_r_ix(1), usr_mtx_r_ix(1), 1)
-         call ems_cp_rl_a(n_a_el, mtx_r_v(1), usr_mtx_r_v(1), 1)
+         call ems_cp_i_a1(n_c+1, mtx_c_sa(1), usr_mtx_c_sa(1))
+         call ems_cp_i_a1(n_a_el, mtx_r_ix(1), usr_mtx_r_ix(1))
+         call ems_cp_rl_a1(n_a_el, mtx_r_v(1), usr_mtx_r_v(1))
       else
          do 10, c_n = 1, n_c
             usr_mtx_c_sa(c_n) = mtx_c_sa(c_n)

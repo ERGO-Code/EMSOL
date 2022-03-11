@@ -1850,7 +1850,7 @@ c
 c
 c     Use ems_cp_i_a to avoid unassigned variable checking
 c
-      call ems_cp_i_a(n_wo, is(ol_blk_p), is(blk_p), 1)
+      call ems_cp_i_a1(n_wo, is(ol_blk_p), is(blk_p))
 c      do 110, wo_n = 0, n_wo-1
 c         is(blk_p+wo_n) = is(ol_blk_p+wo_n)
 c 110  continue
@@ -1984,7 +1984,7 @@ c
 c
 c     Use ems_cp_i_a to avoid unassigned variable checking
 c
-            call ems_cp_i_a(blk_n_wo, is(blk_p), is(p), 1)
+            call ems_cp_i_a1(blk_n_wo, is(blk_p), is(p))
 c            do 110, wo_n = 0, blk_n_wo-1
 c               is(p+wo_n) = is(blk_p+wo_n)
 c 110        continue
@@ -2022,7 +2022,7 @@ c
 c
 c     Use ems_cp_i_a to avoid unassigned variable checking
 c
-            call ems_cp_i_a(blk_n_wo, is(blk_p), is(p), 2)
+            call ems_cp_i_a2(blk_n_wo, is(blk_p), is(p))
 c            do 210, wo_n = blk_n_wo-1, 0, -1
 c               is(p+wo_n) = is(blk_p+wo_n)
 c 210        continue

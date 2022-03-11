@@ -1209,9 +1209,9 @@ c
       p = p_bs_blk/rl_wo_z
       ln = n_ems_rl_ct_vr*rl_wo_z
       if (t) then
-         call ems_cp_rl_a(n_ems_rl_ct_vr, rl_ct_vr, ds(p), 1)
+         call ems_cp_rl_a1(n_ems_rl_ct_vr, rl_ct_vr, ds(p))
       else
-         call ems_cp_rl_a(n_ems_rl_ct_vr, ds(p), rl_ct_vr, 1)
+         call ems_cp_rl_a1(n_ems_rl_ct_vr, ds(p), rl_ct_vr)
       end if
       p_bs_blk = p_bs_blk + ln
 c
@@ -1235,9 +1235,9 @@ c
       p = p_bs_blk/i_wo_z
       ln = n_ems_i_ct_vr*i_wo_z
       if (t) then
-         call ems_cp_i_a(n_ems_i_ct_vr, i_ct_vr, is(p), 1)
+         call ems_cp_i_a1(n_ems_i_ct_vr, i_ct_vr, is(p))
       else
-         call ems_cp_i_a(n_ems_i_ct_vr, is(p), i_ct_vr, 1)
+         call ems_cp_i_a1(n_ems_i_ct_vr, is(p), i_ct_vr)
       end if
       p_bs_blk = p_bs_blk + ln
 c

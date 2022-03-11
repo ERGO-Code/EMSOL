@@ -39,7 +39,7 @@ c     Update the handle for the indices.
 c
       p = p_v + rl_wo_z*(1+n_v)
       if (p .lt. p_ix) then
-         call ems_cp_i_a(1+n_ix, is(p_ix), is(p), 1)
+         call ems_cp_i_a1(1+n_ix, is(p_ix), is(p))
          eta_grp(eta_grp_os_hdl_ix + hdl_os_blk_os) =
      &        eta_grp(eta_grp_os_hdl_ix + hdl_os_blk_os) - (p_ix-p)
          eta_grp(eta_grp_os_hdl_ix + hdl_os_p) = p
@@ -50,7 +50,7 @@ c     Shift the eta records to cover the gap after the indices.
 c     Update the handle for the records.
 c
       if (p .lt. p_rec) then
-         call ems_cp_i_a(1+n_rec, is(p_rec), is(p), 1)
+         call ems_cp_i_a1(1+n_rec, is(p_rec), is(p))
          eta_grp(eta_grp_os_hdl_rec + hdl_os_blk_os) =
      &        eta_grp(eta_grp_os_hdl_rec + hdl_os_blk_os) - (p_rec-p)
          eta_grp(eta_grp_os_hdl_rec + hdl_os_p) = p

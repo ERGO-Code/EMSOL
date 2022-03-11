@@ -87,55 +87,68 @@ c
       end
  
 C->>> --------------------------------------------------> ems_cp_i_a <<<
-      subroutine ems_cp_i_a(ln, fm_i_a, t_i_a, mode)
+      subroutine ems_cp_i_a(ln, from_value, t_i_a, mode)
       implicit none
-      integer ln, t_i_a(1:ln), fm_i_a(1:ln), mode, k
+      integer ln, t_i_a(1:ln), from_value, mode, k
       if (mode .eq. 0) then
          do 10, k = 1, ln
-            t_i_a(k) = fm_i_a(1)
+            t_i_a(k) = from_value
  10      continue
       else if (mode .lt. 0) then
          do 20, k = 1, ln
             t_i_a(k) = k
  20      continue
-      else if (mode .eq. 1) then
-         do 30, k = 1, ln
-            t_i_a(k) = fm_i_a(k)
- 30      continue
-      else if (mode .eq. 2) then
-         do 40, k = ln, 1, -1
-            t_i_a(k) = fm_i_a(k)
- 40      continue
+      else 
+         write(*, *)' Strange mode ', mode
+         stop
+      end if
+      return
+      end
+ 
+C->>> --------------------------------------------------> ems_cp_i_a <<<
+      subroutine ems_cp_i_a1(ln, fm_i_a, t_i_a)
+      implicit none
+      integer ln, t_i_a(1:ln), fm_i_a(1:ln), mode, k
+      do 30, k = 1, ln
+         t_i_a(k) = fm_i_a(k)
+ 30   continue
+      return
+      end
+ 
+C->>> --------------------------------------------------> ems_cp_i_a <<<
+      subroutine ems_cp_i_a2(ln, fm_i_a, t_i_a)
+      implicit none
+      integer ln, t_i_a(1:ln), fm_i_a(1:ln), mode, k
+      do 40, k = ln, 1, -1
+         t_i_a(k) = fm_i_a(k)
+ 40   continue
+      return
+      end
+ 
+C->>> -------------------------------------------------> ems_cp_rl_a <<<
+      subroutine ems_cp_rl_a(ln, from_value, t_rl_a, mode)
+      implicit none
+      integer ln, mode, k
+      double precision t_rl_a(1:ln), from_value
+      if (mode .eq. 0) then
+         do 10, k = 1, ln
+            t_rl_a(k) = from_value
+ 10      continue
       else
-CM      IF (emsol_deb .EQ. 1) THEN
-C?         write(*, *)' Strange mode ', mode
-CM      ENDIF
+         write(*, *)' Strange mode ', mode
+         stop
       end if
       return
       end
  
 C->>> -------------------------------------------------> ems_cp_rl_a <<<
-      subroutine ems_cp_rl_a(ln, fm_rl_a, t_rl_a, mode)
+      subroutine ems_cp_rl_a1(ln, fm_rl_a, t_rl_a)
       implicit none
       integer ln, mode, k
       double precision t_rl_a(1:ln), fm_rl_a(1:ln)
-      if (mode .eq. 0) then
-         do 10, k = 1, ln
-            t_rl_a(k) = fm_rl_a(1)
- 10      continue
-      else if (mode .eq. 1) then
-         do 30, k = 1, ln
-            t_rl_a(k) = fm_rl_a(k)
- 30      continue
-      else if (mode .eq. 2) then
-         do 40, k = ln, 1, -1
-            t_rl_a(k) = fm_rl_a(k)
- 40      continue
-      else
-CM      IF (emsol_deb .EQ. 1) THEN
-C?         write(*, *)' Strange mode ', mode
-CM      ENDIF
-      end if
+      do 30, k = 1, ln
+         t_rl_a(k) = fm_rl_a(k)
+ 30   continue
       return
       end
  

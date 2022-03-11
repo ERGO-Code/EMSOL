@@ -220,13 +220,13 @@ c
 c     Initialise the values and ranges of the integer control variables.
 c
       call ems_iz_i_ct_vr_df
-      call ems_cp_i_a(n_ems_i_ct_vr, i_ct_vr_df, i_ct_vr, 1)
+      call ems_cp_i_a1(n_ems_i_ct_vr, i_ct_vr_df, i_ct_vr)
       call ems_se_i_ct_vr_rg
 c
 c     Initialise the values and ranges of the real control variables.
 c
       call ems_iz_rl_ct_vr_df
-      call ems_cp_rl_a(n_ems_rl_ct_vr, rl_ct_vr_df, rl_ct_vr, 1)
+      call ems_cp_rl_a1(n_ems_rl_ct_vr, rl_ct_vr_df, rl_ct_vr)
       call ems_se_rl_ct_vr_rg
 c
 c     Initialise the character control variables.
@@ -3018,7 +3018,7 @@ CM      ENDIF
          if (ems_msg_cod .ge. ems_msg_lvl_serious) goto 7000
       endif
       ln = min(n_en_rq, n_ems_i_ct_vr)
-      call ems_cp_i_a(ln, i_ct_vr, i_a, 1)
+      call ems_cp_i_a1(ln, i_ct_vr, i_a)
  7000 continue
       rt_cod = ems_msg_cod
       return
@@ -3594,7 +3594,7 @@ CM      ENDIF
          if (ems_msg_cod .ge. ems_msg_lvl_serious) goto 7000
       endif
       ln = min(n_en_rq, n_ems_rl_ct_vr)
-      call ems_cp_rl_a(ln, rl_ct_vr, rl_a, 1)
+      call ems_cp_rl_a1(ln, rl_ct_vr, rl_a)
  7000 continue
       rt_cod = ems_msg_cod
       return

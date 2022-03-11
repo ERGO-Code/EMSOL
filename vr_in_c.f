@@ -340,7 +340,7 @@ CM      ENDIF
          if (ems_msg_no_prt_fm .ge. 1) write(ems_li, 9910)
      &        c_n, vr_in_c(0), m_sn_n
          call ems_msg_wr_li(bug_msg_n)
-         call ems_rp_vr_in_c(1, vr_in_c, i_null, rl_null)
+!         call ems_rp_vr_in_c(1, vr_in_c, i_null, rl_null)
       endif
 CM      IF (emsol_deb .EQ. 1) THEN
 C?      call ems_dump
