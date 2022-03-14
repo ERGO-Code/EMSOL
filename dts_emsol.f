@@ -11,7 +11,8 @@ c      include 'EMSMMGRT.INC'
  
       print*, 'Reached first line'
  
-      open(unit = rd_ml_cn, file = 'ml.mps')
+c     Can only load LPs in EMS format
+      open(unit = rd_ml_cn, file = 'ml.ems')
 
       lc_ds_n_en = ds_n_en
 c      print*, ' Enter lc_ds_n_en '
