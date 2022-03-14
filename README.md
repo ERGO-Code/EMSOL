@@ -11,14 +11,14 @@ This is the last whole version of EMSOL source code.
 * It lacks a driver program
 * It won't compile with modern `f77` (specifically `gcc version 9.4.0 - Ubuntu 9.4.0-1ubuntu1~20.04`) due to some FORTRAN usage that's now illegal.
 
-Specifically, the subroutines `ems_cp_rl_a` and `ems_cp_i_a` were written to operate in different modes: copying the values in a real (or integer) array; copying in a reversed loop; setting array entries equal to their index; setting all array entries to a fixed value. The second parameter (the origin of the values) was dimensioned in the subroutine as an arrray, but sometimes a scalar value was passed in when setting all array entries to a fixed value. This abuse of FORTRAN has been side-stepped by creating special versions of `ems_cp_rl_a` and `ems_cp_i_a` for the cases where whole arrays are copied, and the original subroutines modified to deal with the case where an array is initialised to a scalar value.
+Specifically, the subroutines `ems_cp_rl_a` and `ems_cp_i_a` were written to operate in different modes: copying the values in a real (or integer) array; copying in a reversed loop; setting array entries equal to their index; setting all array entries to a fixed value. The second parameter (the origin of the values) was dimensioned in the subroutine as an arrray, but sometimes a scalar value was passed in when setting all array entries to a fixed value.
 
 `master`
 -------
 
 This includes 
 * A driver program
-* Edits to allow it to be compiled with modern `f77`
+* Edits to allow it to be compiled with modern `f77`. Specifically the abuse of FORTRAN (above) has been side-stepped by creating special versions of `ems_cp_rl_a` and `ems_cp_i_a` for the cases where whole arrays are copied, and the original subroutines modified to deal with the case where an array is initialised to a scalar value.
 * A bug fix in `dvx.f` that may have been communicated to users
 * Full implementation of code to guard against "division by zero" exceptions in `dan_r_d.f`, `sed_r_s.f`, `sed_r_d.f`, `dvx_r_s.f`, `dvx_r_d.f` and `dan_r_s.f`.
 
