@@ -689,17 +689,28 @@ c     used to update them without checking whether the variable is basic
 c     or nonbasic---thus causing an unassigned variable error with EPC.
 c
       call ems_cp_rl_a(n_r, zero, ed_wt(mx_n_c+1), 0)
-      do 10, c_n = 1, vr_in_c(os_lg_in_c_l_pc_p)
+c
+c     Original initialisation didn't assign weights to variables not being priced
+c     but this led to FPR when such weights for logicals were updated when
+c     passing through pi---even if the weights were never used. Probably safe to
+c     delete loops 10 and 20, but they are commented out for reference.
+c
+c      do 10, c_n = 1, vr_in_c(os_lg_in_c_l_pc_p)
+c         vr_n = vr_in_c(c_n)
+c         ed_wt(vr_n) = one
+c         dvx_ix(vr_n) = 0
+c 10   continue
+c      do 20, c_n = vr_in_c(os_struc_in_c_f_p_m1) + 1,
+c     &     vr_in_c(os_struc_in_c_l_pc_p)
+c         vr_n = vr_in_c(c_n)
+c         ed_wt(vr_n) = one
+c         dvx_ix(vr_n) = 0
+c     20   continue
+      do 10, c_n = 1, n_c
          vr_n = vr_in_c(c_n)
          ed_wt(vr_n) = one
          dvx_ix(vr_n) = 0
  10   continue
-      do 20, c_n = vr_in_c(os_struc_in_c_f_p_m1) + 1,
-     &     vr_in_c(os_struc_in_c_l_pc_p)
-         vr_n = vr_in_c(c_n)
-         ed_wt(vr_n) = one
-         dvx_ix(vr_n) = 0
- 20   continue
       do 30, r_n = 1, n_r
          vr_n = vr_in_r(r_n)
          ed_wt(vr_n) = zero
