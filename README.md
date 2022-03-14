@@ -7,7 +7,7 @@ EMSOL was written 1992-2013 by @jajhall, with rather ad-hoc versioning.
 ---------
 
 This is the last whole version of EMSOL source code. 
-* It contains bug fixes for "EMSOL v2.16`.
+* It contains bug fixes for "EMSOL v2.16".
 * It lacks a driver program
 * It won't compile with modern `f77` (specifically `gcc version 9.4.0 - Ubuntu 9.4.0-1ubuntu1~20.04`) due to some FORTRAN usage that's now illegal.
 
