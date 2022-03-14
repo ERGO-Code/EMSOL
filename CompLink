@@ -1,1 +1,1 @@
-f77 -fno-range-check *.f
+f77 -O2 -fno-range-check *.f
