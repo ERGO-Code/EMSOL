@@ -11,6 +11,8 @@ This is the last whole version of EMSOL source code.
 * It lacks a driver program
 * It won't compile with modern `f77` (specifically `gcc version 9.4.0 - Ubuntu 9.4.0-1ubuntu1~20.04`) due to some FORTRAN usage that's now illegal.
 
+Specifically, the subroutines `ems_cp_rl_a` and `ems_cp_i_a` were written to operate in different modes: copying the values in a real (or integer) array; copying in a reversed loop; setting array entries equal to their index; setting all array entries to a fixed value. The second parameter (the origin of the values) was dimensioned in the subroutine as an arrray, but sometimes a scalar value was passed in when setting all array entries to a fixed value. This abuse of FORTRAN has been side-stepped by creating special versions of `ems_cp_rl_a` and `ems_cp_i_a` for thecases where whole arrays are copied, and the original subroutines modified to deal with the case where an array is initialised to a scalar value.
+
 `master`
 -------
 
