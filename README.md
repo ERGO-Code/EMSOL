@@ -28,5 +28,5 @@ Note
 * To compile EMSOL may require the`-fno-range-check` flag to cope with the mechanism used in `EMSV.INC` to set the 32nd bit in a 32-bit integer
 * EMSOL will only read files in `EMS` format. Instances for checking are provided
 * No version of EMSOL is supported in any way
-* Anyone using EMSOL is strongly advised to continue using the verion that hey have!
+* Anyone using EMSOL is strongly advised to continue using the verion that they have!
 
