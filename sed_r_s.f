@@ -342,6 +342,7 @@ c
 c     Alpha_1 should not be less than the minimum step due to primal
 c     feasibility tolerance.
 c
+      if (pv .eq. zero) goto 8090
       if (aa_1 .lt. xp_tau/abs(pv)) goto 8060
       if (ix_o_vr_t_lv_bs .eq. 0) then
 c
@@ -676,6 +677,7 @@ c
             goto 600
          end if
       end if
+      if (pv .eq. zero) goto 8090
       if (aa_1 .lt. xp_tau/abs(pv)) goto 8060
       if (psi .eq. zero .and. ix_o_vr_t_lv_bs .eq. 0) then
 c
@@ -965,6 +967,7 @@ C? 9992       continue
 C?         endif
 C?      endif
 CM      ENDIF
+      if (mx_pv .eq. zero) goto 8090
       aa = max(aa, xp_tau/mx_pv)
       if (aa .ge. inf) goto 8010
       if (aa .lt. zero) goto 8020
@@ -1347,6 +1350,10 @@ CM      ENDIF
       if (ems_msg_no_prt_fm .ge. 1) write(ems_li, 9880)n_si_it
       call ems_msg_wr_li(warn_msg_n)
       goto 7000
+ 8090 continue
+      if (ems_msg_no_prt_fm .ge. 1) write(ems_li, 9890)n_si_it
+      call ems_msg_wr_li(serious_msg_n)
+      goto 7000
  9300 format('Iteration ', i7,
      &     ': Incoming variable is still a candidate')
  9410 format('Iteration ', i7,
@@ -1378,6 +1385,7 @@ CM      ENDIF
      &     ' is less than the minimum step ', g11.4)
  9880 format('Iteration ', i7,
      &     ': Error passed down from the growth-handling routine')
+ 9890 format('Iteration ', i7, ': Serious error due to zero pivot')
       end
 CM      IF (dan .EQ. 1) THEN
 C?C->>> -------------------------------------------> ems_dan_l1_cz_r <<<
@@ -1791,6 +1799,7 @@ c     Alpha_BP should not be less than the minimum step due to primal
 c     feasibility tolerance.
 c
          pv = nw_eta_v(sv_aa_bp_ix)
+         if (pv .eq. zero) goto 8090
          if (aa_bp .lt. xp_tau/abs(pv)) go to 8060
       else
          loop_n = 210
@@ -2470,6 +2479,7 @@ c     Alpha_BP should not be less than the minimum step due to primal
 c     feasibility tolerance.
 c
          pv = nw_eta_v(sv_aa_bp_ix)
+         if (pv .eq. zero) goto 8090
          if (aa_bp .lt. xp_tau/abs(pv)) go to 8060
       else
          loop_n = 410
@@ -3289,6 +3299,7 @@ CM      IF (sed .EQ. 1) THEN
 CM      ENDIF
       vr_t_lv_bs = vr_in_r(nw_eta_ix(ix_o_vr_t_lv_bs))
       pv = nw_eta_v(ix_o_vr_t_lv_bs)
+      if (mx_pv .eq. zero) goto 8090
       aa = max(aa, xp_tau/mx_pv)
       if (aa .ge. inf) go to 8010
       if (aa .lt. zero) go to 8020
@@ -3476,6 +3487,10 @@ CM      ENDIF
      &     n_si_it, aa_bp, xp_tau/abs(pv)
       call ems_msg_wr_li(warn_msg_n)
       go to 7000
+ 8090 continue
+      if (ems_msg_no_prt_fm .ge. 1) write(ems_li, 9890)n_si_it
+      call ems_msg_wr_li(serious_msg_n)
+      goto 7000
  8990 continue
       if (ems_msg_no_prt_fm .ge. 1) write(ems_li, 9899)
       call ems_msg_wr_li(bug_msg_n)
@@ -3511,5 +3526,6 @@ c 9220 format('Iteration ', i7, ': Negative ratio = ', g11.4)
  9806 format('Iteration ', i7,
      &     ': Ratio test with expanded bounds gives step ', g11.4,
      &     ' less than the minimum step ', g11.4)
+ 9890 format('Iteration ', i7, ': Serious error due to zero pivot')
  9899 format('STRANGE: aa_2_ix corresponds to BP variable')
       end

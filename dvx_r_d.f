@@ -1799,6 +1799,7 @@ c     Alpha_BP should not be less than the minimum step due to primal
 c     feasibility tolerance.
 c
          pv = nw_eta_v(sv_aa_bp_ix)
+         if (pv .eq. zero) goto 8090
          if (aa_bp .lt. xp_tau/abs(pv)) go to 8060
       else
          loop_n = 210
@@ -2478,6 +2479,7 @@ c     Alpha_BP should not be less than the minimum step due to primal
 c     feasibility tolerance.
 c
          pv = nw_eta_v(sv_aa_bp_ix)
+         if (pv .eq. zero) goto 8090
          if (aa_bp .lt. xp_tau/abs(pv)) go to 8060
       else
          loop_n = 410
